@@ -27,18 +27,6 @@ export function useAction(cb: Cb): void {
 	if (event) cb(event.action);
 }
 
-export function useActionSelector(cb: Cb, args: [string]): void {
-	let event = useContext(SuperContext);
-	let [prevAction, setPrevAction] = useState<ActionEvent | undefined>(
-		undefined,
-	);
-
-	if (!event || !(event instanceof ActionEvent) || event === prevAction || args[0] === event?.type) return;
-
-	setPrevAction(event);
-	if (event) cb(event.action);
-}
-
 export function useJsonEvent(cb: CbJson): void {
 	let event = useContext(SuperContext);
 	let [prevAction, setPrevAction] = useState<JsonEvent | undefined>(
