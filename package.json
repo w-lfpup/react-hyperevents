@@ -1,4 +1,12 @@
 {
+  "scripts": {
+		"prepare": "npm run build",
+		"build": "npm run build:core",
+		"build:core": "npx tsc --project src/",
+		"build:examples": "npx tsc --project examples/",
+		"bundle": "rollup --config rollup.config.js",
+		"format": "npx prettier ./ --write"
+	},
   "dependencies": {
     "@w-lfpup/hyperevents": "^0.2.1"
   },

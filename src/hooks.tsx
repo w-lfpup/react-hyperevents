@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { ReactNode, useContext, useState } from "react";
 import { SuperContext } from "./context.js";
 import { ActionEvent, JsonEvent, HtmlEvent } from "@w-lfpup/hyperevents";
 
@@ -27,7 +27,7 @@ export function useAction(cb: Cb): void {
 	if (event) cb(event.action);
 }
 
-export function useJsonEvent(cb: CbJson): void {
+export function useJsonRequest(cb: CbJson): void {
 	let event = useContext(SuperContext);
 	let [prevAction, setPrevAction] = useState<JsonEvent | undefined>(
 		undefined,
@@ -41,7 +41,7 @@ export function useJsonEvent(cb: CbJson): void {
 }
 
 // should this be a JSX?
-export function useHtmlEvent(cb: CbHtml): void {
+export function useHtmlRequest(cb: CbHtml): void {
 	let event = useContext(SuperContext);
 	let [prevAction, setPrevAction] = useState<HtmlEvent | undefined>(
 		undefined,
