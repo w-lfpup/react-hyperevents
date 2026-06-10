@@ -27,7 +27,8 @@ The `SuperActionProvider` component below listens for click events. React develo
 ```tsx
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { SuperActionProvider } from "@w-lfpup/react-superaction";
+import { HyperEvents } from "@w-lfpup/hyperevents";
+import { SuperActionProvider } from "@w-lfpup/react-hyperevents";
 import { Counter } from "./counter.js";
 
 let rootEl = document.querySelector("#root")!;
