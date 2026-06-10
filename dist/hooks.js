@@ -3,54 +3,46 @@ import { SuperContext } from "./context.js";
 import { ActionEvent, JsonEvent, HtmlEvent, EsModuleEvent, } from "@w-lfpup/hyperevents";
 export function useAction(cb, args) {
     let actionEvent = useContext(SuperContext);
-    let [prevAction, setPrevAction] = useState(undefined);
-    if (actionEvent === prevAction)
-        return;
-    if (!(actionEvent instanceof ActionEvent))
+    let [prevEvent, setPrevEvent] = useState(undefined);
+    if (actionEvent === prevEvent || !(actionEvent instanceof ActionEvent))
         return;
     if (args && args[0] !== actionEvent.type)
         return;
-    setPrevAction(actionEvent);
+    setPrevEvent(actionEvent);
     if (actionEvent)
         cb(actionEvent.action);
 }
 export function useJson(cb, args) {
-    let actionEvent = useContext(SuperContext);
-    let [prevAction, setPrevAction] = useState(undefined);
-    if (actionEvent === prevAction)
+    let jsonEvent = useContext(SuperContext);
+    let [prevEvent, setPrevEvent] = useState(undefined);
+    if (jsonEvent === prevEvent || !(jsonEvent instanceof JsonEvent))
         return;
-    if (!(actionEvent instanceof JsonEvent))
+    if (args && args[0] !== jsonEvent.type)
         return;
-    if (args && args[0] !== actionEvent.type)
-        return;
-    setPrevAction(actionEvent);
-    if (actionEvent)
-        cb(actionEvent.requestState);
+    setPrevEvent(jsonEvent);
+    if (jsonEvent)
+        cb(jsonEvent.requestState);
 }
 export function useEsmodule(cb, args) {
-    let actionEvent = useContext(SuperContext);
-    let [prevAction, setPrevAction] = useState(undefined);
-    if (actionEvent === prevAction)
+    let esmoduleEvent = useContext(SuperContext);
+    let [prevEvent, setPrevEvent] = useState(undefined);
+    if (esmoduleEvent === prevEvent || !(esmoduleEvent instanceof EsModuleEvent))
         return;
-    if (!(actionEvent instanceof EsModuleEvent))
+    if (args && args[0] !== esmoduleEvent.type)
         return;
-    if (args && args[0] !== actionEvent.type)
-        return;
-    setPrevAction(actionEvent);
-    if (actionEvent)
-        cb(actionEvent.requestState);
+    setPrevEvent(esmoduleEvent);
+    if (esmoduleEvent)
+        cb(esmoduleEvent.requestState);
 }
 // should this be a JSX?
 export function useHtml(cb, args) {
-    let actionEvent = useContext(SuperContext);
-    let [prevAction, setPrevAction] = useState(undefined);
-    if (actionEvent === prevAction)
+    let htmlEvent = useContext(SuperContext);
+    let [prevEvent, setPrevEvent] = useState(undefined);
+    if (htmlEvent === prevEvent || !(htmlEvent instanceof HtmlEvent))
         return;
-    if (!(actionEvent instanceof HtmlEvent))
+    if (args && args[0] !== htmlEvent.type)
         return;
-    if (args && args[0] !== actionEvent.type)
-        return;
-    setPrevAction(actionEvent);
-    if (actionEvent)
-        cb(actionEvent.requestState);
+    setPrevEvent(htmlEvent);
+    if (htmlEvent)
+        cb(htmlEvent.requestState);
 }
