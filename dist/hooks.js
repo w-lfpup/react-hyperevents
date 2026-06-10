@@ -1,8 +1,8 @@
 import { useContext, useState } from "react";
-import { SuperContext } from "./context.js";
+import { HyperContext } from "./context.js";
 import { ActionEvent, JsonEvent, HtmlEvent, EsModuleEvent, } from "@w-lfpup/hyperevents";
 export function useAction(cb, args) {
-    let actionEvent = useContext(SuperContext);
+    let actionEvent = useContext(HyperContext);
     let [prevEvent, setPrevEvent] = useState(undefined);
     if (actionEvent === prevEvent || !(actionEvent instanceof ActionEvent))
         return;
@@ -13,7 +13,7 @@ export function useAction(cb, args) {
         cb(actionEvent.action);
 }
 export function useJson(cb, args) {
-    let jsonEvent = useContext(SuperContext);
+    let jsonEvent = useContext(HyperContext);
     let [prevEvent, setPrevEvent] = useState(undefined);
     if (jsonEvent === prevEvent || !(jsonEvent instanceof JsonEvent))
         return;
@@ -24,7 +24,7 @@ export function useJson(cb, args) {
         cb(jsonEvent.requestState);
 }
 export function useEsmodule(cb, args) {
-    let esmoduleEvent = useContext(SuperContext);
+    let esmoduleEvent = useContext(HyperContext);
     let [prevEvent, setPrevEvent] = useState(undefined);
     if (esmoduleEvent === prevEvent || !(esmoduleEvent instanceof EsModuleEvent))
         return;
@@ -36,7 +36,7 @@ export function useEsmodule(cb, args) {
 }
 // should this be a JSX?
 export function useHtml(cb, args) {
-    let htmlEvent = useContext(SuperContext);
+    let htmlEvent = useContext(HyperContext);
     let [prevEvent, setPrevEvent] = useState(undefined);
     if (htmlEvent === prevEvent || !(htmlEvent instanceof HtmlEvent))
         return;

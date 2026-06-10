@@ -1,2 +1,1 @@
-import React from "react";
-export declare const SuperContext: React.Context<Event | undefined>;
+export declare const HyperContext: import("react").Context<Event | undefined>;

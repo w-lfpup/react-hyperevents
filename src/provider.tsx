@@ -1,5 +1,5 @@
 import React, { ReactNode, useEffect, useState } from "react";
-import { SuperContext } from "./context.js";
+import { HyperContext } from "./context.js";
 
 interface ProviderProps {
   eventNames: string[];
@@ -8,7 +8,7 @@ interface ProviderProps {
   target?: EventTarget;
 }
 
-export function SuperActionProvider(props: ProviderProps) {
+export function HypereventsProvider(props: ProviderProps) {
   let { eventNames, children, host = document, target } = props;
   let [value, setValue] = useState<Event | undefined>(undefined);
 
@@ -34,6 +34,6 @@ export function SuperActionProvider(props: ProviderProps) {
   );
 
   return (
-    <SuperContext.Provider value={value}>{children}</SuperContext.Provider>
+    <HyperContext.Provider value={value}>{children}</HyperContext.Provider>
   );
 }

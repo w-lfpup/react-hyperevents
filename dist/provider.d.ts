@@ -5,5 +5,5 @@ interface ProviderProps {
     host?: EventTarget;
     target?: EventTarget;
 }
-export declare function SuperActionProvider(props: ProviderProps): React.JSX.Element;
+export declare function HypereventsProvider(props: ProviderProps): React.JSX.Element;
 export {};

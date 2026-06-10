@@ -1,3 +1,3 @@
-import React from "react";
+import { createContext } from "react";
 
-export const SuperContext = React.createContext<Event | undefined>(undefined);
+export const HyperContext = createContext<Event | undefined>(undefined);

@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { SuperContext } from "./context.js";
+import { HyperContext } from "./context.js";
 import {
   ActionEvent,
   JsonEvent,
@@ -24,7 +24,7 @@ interface CbHtml {
 }
 
 export function useAction(cb: Cb, args?: [string]): void {
-  let actionEvent = useContext(SuperContext);
+  let actionEvent = useContext(HyperContext);
   let [prevEvent, setPrevEvent] = useState<ActionEvent | undefined>(undefined);
 
   if (actionEvent === prevEvent || !(actionEvent instanceof ActionEvent))
@@ -36,7 +36,7 @@ export function useAction(cb: Cb, args?: [string]): void {
 }
 
 export function useJson(cb: CbJson, args?: [string]): void {
-  let jsonEvent = useContext(SuperContext);
+  let jsonEvent = useContext(HyperContext);
   let [prevEvent, setPrevEvent] = useState<JsonEvent | undefined>(undefined);
 
   if (jsonEvent === prevEvent || !(jsonEvent instanceof JsonEvent)) return;
@@ -47,7 +47,7 @@ export function useJson(cb: CbJson, args?: [string]): void {
 }
 
 export function useEsmodule(cb: CbEsModule, args?: [string]): void {
-  let esmoduleEvent = useContext(SuperContext);
+  let esmoduleEvent = useContext(HyperContext);
   let [prevEvent, setPrevEvent] = useState<EsModuleEvent | undefined>(
     undefined,
   );
@@ -62,7 +62,7 @@ export function useEsmodule(cb: CbEsModule, args?: [string]): void {
 
 // should this be a JSX?
 export function useHtml(cb: CbHtml, args?: [string]): void {
-  let htmlEvent = useContext(SuperContext);
+  let htmlEvent = useContext(HyperContext);
   let [prevEvent, setPrevEvent] = useState<HtmlEvent | undefined>(undefined);
 
   if (htmlEvent === prevEvent || !(htmlEvent instanceof HtmlEvent)) return;
