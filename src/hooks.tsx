@@ -1,4 +1,4 @@
-import { ReactNode, useContext, useState } from "react";
+import { useContext, useState } from "react";
 import { SuperContext } from "./context.js";
 import {
   ActionEvent,
@@ -25,53 +25,49 @@ interface CbHtml {
 
 export function useAction(cb: Cb, args?: [string]): void {
   let actionEvent = useContext(SuperContext);
-  let [prevAction, setPrevAction] = useState<ActionEvent | undefined>(
-    undefined,
-  );
+  let [prevEvent, setPrevEvent] = useState<ActionEvent | undefined>(undefined);
 
-  if (actionEvent === prevAction) return;
-  if (!(actionEvent instanceof ActionEvent)) return;
+  if (actionEvent === prevEvent || !(actionEvent instanceof ActionEvent))
+    return;
   if (args && args[0] !== actionEvent.type) return;
 
-  setPrevAction(actionEvent);
+  setPrevEvent(actionEvent);
   if (actionEvent) cb(actionEvent.action);
 }
 
 export function useJson(cb: CbJson, args?: [string]): void {
-  let actionEvent = useContext(SuperContext);
-  let [prevAction, setPrevAction] = useState<JsonEvent | undefined>(undefined);
+  let jsonEvent = useContext(SuperContext);
+  let [prevEvent, setPrevEvent] = useState<JsonEvent | undefined>(undefined);
 
-  if (actionEvent === prevAction) return;
-  if (!(actionEvent instanceof JsonEvent)) return;
-  if (args && args[0] !== actionEvent.type) return;
+  if (jsonEvent === prevEvent || !(jsonEvent instanceof JsonEvent)) return;
+  if (args && args[0] !== jsonEvent.type) return;
 
-  setPrevAction(actionEvent);
-  if (actionEvent) cb(actionEvent.requestState);
+  setPrevEvent(jsonEvent);
+  if (jsonEvent) cb(jsonEvent.requestState);
 }
 
 export function useEsmodule(cb: CbEsModule, args?: [string]): void {
-  let actionEvent = useContext(SuperContext);
-  let [prevAction, setPrevAction] = useState<EsModuleEvent | undefined>(
+  let esmoduleEvent = useContext(SuperContext);
+  let [prevEvent, setPrevEvent] = useState<EsModuleEvent | undefined>(
     undefined,
   );
 
-  if (actionEvent === prevAction) return;
-  if (!(actionEvent instanceof EsModuleEvent)) return;
-  if (args && args[0] !== actionEvent.type) return;
+  if (esmoduleEvent === prevEvent || !(esmoduleEvent instanceof EsModuleEvent))
+    return;
+  if (args && args[0] !== esmoduleEvent.type) return;
 
-  setPrevAction(actionEvent);
-  if (actionEvent) cb(actionEvent.requestState);
+  setPrevEvent(esmoduleEvent);
+  if (esmoduleEvent) cb(esmoduleEvent.requestState);
 }
 
 // should this be a JSX?
 export function useHtml(cb: CbHtml, args?: [string]): void {
-  let actionEvent = useContext(SuperContext);
-  let [prevAction, setPrevAction] = useState<HtmlEvent | undefined>(undefined);
+  let htmlEvent = useContext(SuperContext);
+  let [prevEvent, setPrevEvent] = useState<HtmlEvent | undefined>(undefined);
 
-  if (actionEvent === prevAction) return;
-  if (!(actionEvent instanceof HtmlEvent)) return;
-  if (args && args[0] !== actionEvent.type) return;
+  if (htmlEvent === prevEvent || !(htmlEvent instanceof HtmlEvent)) return;
+  if (args && args[0] !== htmlEvent.type) return;
 
-  setPrevAction(actionEvent);
-  if (actionEvent) cb(actionEvent.requestState);
+  setPrevEvent(htmlEvent);
+  if (htmlEvent) cb(htmlEvent.requestState);
 }

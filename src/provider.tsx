@@ -1,6 +1,4 @@
 import React, { ReactNode, useEffect, useState } from "react";
-import { HyperEvents } from "@w-lfpup/hyperevents";
-
 import { SuperContext } from "./context.js";
 
 interface ProviderProps {
@@ -16,25 +14,16 @@ export function SuperActionProvider(props: ProviderProps) {
 
   useEffect(
     function () {
-      let superAction = new HyperEvents({
-        infix: "-",
-        host,
-        target,
-        eventNames,
-      });
-
       function cb(e: Event) {
         setValue(e);
       }
 
-      superAction.connect();
       host.addEventListener("#action", cb);
       host.addEventListener("#esmodule", cb);
       host.addEventListener("#html", cb);
       host.addEventListener("#json", cb);
 
       return function () {
-        superAction.disconnect();
         host.removeEventListener("#action", cb);
         host.removeEventListener("#esmodule", cb);
         host.removeEventListener("#html", cb);
