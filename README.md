@@ -41,7 +41,7 @@ let _hyperEvents = new HyperEvents({
 });
 
 root.render(
-	<HyperEventsProvider eventNames={eventNames}>
+	<HyperEventsProvider target={rootEl}>
 		<Counter />
 	</HyperEventsProvider>,
 );
