@@ -1,19 +1,33 @@
 {
+  "name": "@w-lfpup/react-hyperevents",
+  "type": "module",
+  "main": "dist/mod.js",
+  "description": "A virtual-dom extension",
+  "license": "BSD-3-Clause",
+  "version": "0.1.1",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/w-lfpup/react-hyperevents.git"
+  },
   "scripts": {
-		"prepare": "npm run build",
-		"build": "npm run build:core",
-		"build:core": "npx tsc --project src/",
-		"build:examples": "npx tsc --project examples/",
-		"bundle": "rollup --config rollup.config.js",
-		"format": "npx prettier ./ --write"
-	},
-  "dependencies": {
-    "@w-lfpup/hyperevents": "^0.2.1"
+    "prepare": "npm run build",
+    "build": "npm run build:core",
+    "build:core": "npx tsc --project src/",
+    "bundle": "rollup --config rollup.config.js",
+    "format": "npx prettier ./ --write"
   },
   "devDependencies": {
+    "@rollup/plugin-commonjs": "^29.0.3",
+    "@rollup/plugin-node-resolve": "^16.0.3",
+    "@rollup/plugin-replace": "^6.0.3",
     "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",
+    "prettier": "^3.8.4",
     "react": "^19.2.7",
-    "react-dom": "^19.2.7"
+    "react-dom": "^19.2.7",
+    "typescript": "^6.0.3"
+  },
+  "dependencies": {
+    "@w-lfpup/hyperevents": "^0.2.3"
   }
 }

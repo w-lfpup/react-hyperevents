@@ -1,0 +1,7 @@
+dist/
+examples/
+node_modules/
+
+*.bundled.js
+*.html
+package-lock.json
