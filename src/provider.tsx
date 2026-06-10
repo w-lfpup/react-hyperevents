@@ -2,13 +2,12 @@ import React, { ReactNode, useEffect, useState } from "react";
 import { HyperContext } from "./context.js";
 
 interface ProviderProps {
-  eventNames: string[];
   children: ReactNode;
   target: EventTarget;
 }
 
 export function HypereventsProvider(props: ProviderProps) {
-  let { eventNames, children, target } = props;
+  let { children, target } = props;
   let [value, setValue] = useState<Event | undefined>(undefined);
 
   useEffect(
@@ -29,7 +28,7 @@ export function HypereventsProvider(props: ProviderProps) {
         target.removeEventListener("#json", cb);
       };
     },
-    [eventNames],
+    [target],
   );
 
   return (
