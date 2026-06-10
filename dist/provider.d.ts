@@ -1,6 +1,5 @@
 import React, { ReactNode } from "react";
 interface ProviderProps {
-    eventNames: string[];
     children: ReactNode;
     target: EventTarget;
 }

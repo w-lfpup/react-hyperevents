@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { HyperContext } from "./context.js";
 export function HypereventsProvider(props) {
-    let { eventNames, children, target } = props;
+    let { children, target } = props;
     let [value, setValue] = useState(undefined);
     useEffect(function () {
         function cb(e) {
@@ -17,6 +17,6 @@ export function HypereventsProvider(props) {
             target.removeEventListener("#html", cb);
             target.removeEventListener("#json", cb);
         };
-    }, [eventNames]);
+    }, [target]);
     return (React.createElement(HyperContext.Provider, { value: value }, children));
 }
